@@ -77,7 +77,7 @@ const Contact = () => {
       icon: Github,
       name: "GitHub",
       url: "https://github.com/Bhuvanesh9876",
-      color: "hover:text-purple-400"
+      color: "hover:text-cyan-400"
     },
     {
       icon: Linkedin,
@@ -142,7 +142,7 @@ const Contact = () => {
                   whileHover={{ x: 5 }}
                   className="flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 glass-effect rounded-xl sm:rounded-2xl hover:bg-white hover:bg-opacity-10 transition-all group cursor-pointer"
                 >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
                     <item.icon size={20} className="sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="min-w-0">
@@ -215,7 +215,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm sm:text-base"
                       placeholder="Enter your name"
                     />
                   </div>
@@ -231,7 +231,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm sm:text-base"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -248,7 +248,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm sm:text-base"
                     placeholder="What's this about?"
                   />
                 </div>
@@ -264,7 +264,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows="4"
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all resize-none text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all resize-none text-sm sm:text-base"
                     placeholder="Tell me about your project or just say hello!"
                   />
                 </div>
@@ -274,7 +274,7 @@ const Contact = () => {
                   disabled={isLoading}
                   whileHover={{ scale: isLoading ? 1 : 1.05 }}
                   whileTap={{ scale: isLoading ? 1 : 0.95 }}
-                  className="w-full py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transition-all"
+                  className="w-full py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transition-all"
                 >
                   {isLoading ? (
                     <>

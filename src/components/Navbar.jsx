@@ -59,7 +59,7 @@ const Navbar = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="hidden md:block px-4 py-2 lg:px-6 lg:py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-medium hover:shadow-lg transition-shadow text-sm lg:text-base"
+            className="hidden md:block px-4 py-2 lg:px-6 lg:py-2 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-full font-medium hover:shadow-lg transition-shadow text-sm lg:text-base"
             onClick={() => scrollToSection('contact')}
           >
             Get In Touch
@@ -98,7 +98,7 @@ const Navbar = () => {
                 <motion.button
                   whileTap={{ scale: 0.95 }}
                   onClick={() => scrollToSection('contact')}
-                  className="w-full text-left px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg mx-4 my-2 font-medium"
+                  className="w-full text-left px-6 py-3 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white rounded-lg mx-4 my-2 font-medium"
                 >
                   Get In Touch
                 </motion.button>

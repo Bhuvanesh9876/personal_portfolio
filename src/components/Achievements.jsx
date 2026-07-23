@@ -23,7 +23,7 @@ const Achievements = () => {
       title: "Open Source Contributor",
       description: "Active contributor to major projects",
       count: "50+",
-      color: "from-purple-500 to-pink-500"
+      color: "from-indigo-500 to-cyan-500"
     },
     {
       icon: Target,
@@ -44,7 +44,7 @@ const Achievements = () => {
       title: "Certifications",
       description: "Professional certifications earned",
       count: "12",
-      color: "from-pink-500 to-rose-500"
+      color: "from-teal-500 to-emerald-500"
     }
   ]
 
@@ -167,7 +167,7 @@ const Achievements = () => {
                   <p className="text-gray-400 text-sm sm:text-base">{cert.issuer}</p>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <span className="text-purple-400 font-medium text-sm sm:text-base">{cert.date}</span>
+                  <span className="text-cyan-400 font-medium text-sm sm:text-base">{cert.date}</span>
                   <div className="text-xs text-gray-500">Issued</div>
                 </div>
               </motion.div>
@@ -187,7 +187,7 @@ const Achievements = () => {
           
           <div className="relative">
             {/* Timeline line - Hidden on mobile, visible on md and up */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-600 to-pink-600"></div>
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-500 to-emerald-500"></div>
             
             {/* Timeline items */}
             {[
@@ -209,14 +209,14 @@ const Achievements = () => {
               >
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'} mb-4 md:mb-0`}>
                   <div className="glass-effect rounded-xl sm:rounded-2xl p-4 sm:p-6 inline-block w-full md:w-auto">
-                    <div className="text-purple-400 font-bold text-base sm:text-lg">{item.year}</div>
+                    <div className="text-cyan-400 font-bold text-base sm:text-lg">{item.year}</div>
                     <div className="text-white font-semibold text-lg sm:text-xl mb-2">{item.event}</div>
                     <div className="text-gray-400 text-sm sm:text-base">{item.description}</div>
                   </div>
                 </div>
                 
                 {/* Timeline dot - Hidden on mobile, visible on md and up */}
-                <div className="hidden md:block w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 border-4 border-black z-10"></div>
+                <div className="hidden md:block w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 border-4 border-black z-10"></div>
                 
                 <div className="w-full md:w-1/2"></div>
               </motion.div>

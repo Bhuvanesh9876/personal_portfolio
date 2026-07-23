@@ -14,11 +14,11 @@ function Points({ count = 1000 }) {
     const speeds = new Float32Array(count)
     
     const colorPalette = [
-      new THREE.Color('#a855f7'), // Radiant Purple
-      new THREE.Color('#3b82f6'), // Royal Blue
-      new THREE.Color('#ec4899'), // Electric Pink
+      new THREE.Color('#10b981'), // Emerald Green
       new THREE.Color('#06b6d4'), // Cyber Cyan
-      new THREE.Color('#f43f5e'), // Rose Glow
+      new THREE.Color('#3b82f6'), // Royal Blue
+      new THREE.Color('#34d399'), // Mint Green
+      new THREE.Color('#22c55e'), // Neon Green
     ]
 
     for (let i = 0; i < count; i++) {
@@ -135,9 +135,9 @@ function NebulaClouds({ count = 12 }) {
     const colors = new Float32Array(count * 3)
 
     const colorPalette = [
-      new THREE.Color('#4c1d95'), // Deep Purple
+      new THREE.Color('#064e3b'), // Deep Emerald/Forest Green
       new THREE.Color('#1e3a8a'), // Deep Blue
-      new THREE.Color('#3b0764'), // Indigo Dark Glow
+      new THREE.Color('#022c22'), // Deep Dark Teal Glow
     ]
 
     for (let i = 0; i < count; i++) {

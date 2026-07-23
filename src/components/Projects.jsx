@@ -85,7 +85,7 @@ const Projects = () => {
             <X size={20} className="sm:w-6 sm:h-6" />
           </button>
           
-          <div className="h-40 sm:h-64 bg-gradient-to-r from-purple-600 to-pink-600 rounded-t-xl sm:rounded-t-2xl relative overflow-hidden">
+          <div className="h-40 sm:h-64 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-t-xl sm:rounded-t-2xl relative overflow-hidden">
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
               <span className="text-4xl sm:text-6xl">🚀</span>
             </div>
@@ -93,7 +93,7 @@ const Projects = () => {
           
           <div className="p-4 sm:p-6 lg:p-8">
             <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
-              <span className="px-2 py-1 sm:px-3 sm:py-1 bg-purple-600 rounded-full text-xs sm:text-sm font-medium">
+              <span className="px-2 py-1 sm:px-3 sm:py-1 bg-cyan-600 rounded-full text-xs sm:text-sm font-medium">
                 {project.category}
               </span>
               {project.technologies.map((tech, index) => (
@@ -126,7 +126,7 @@ const Projects = () => {
                 href={project.live}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center space-x-2 px-4 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl hover:shadow-lg transition-all text-sm sm:text-base"
+                className="flex items-center justify-center space-x-2 px-4 py-3 sm:px-6 sm:py-3 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-xl hover:shadow-lg transition-all text-sm sm:text-base"
               >
                 <ExternalLink size={18} className="sm:w-5 sm:h-5" />
                 <span>Live Demo</span>
@@ -172,7 +172,7 @@ const Projects = () => {
               onClick={() => setActiveFilter(category)}
               className={`px-4 py-2 rounded-full text-sm sm:text-base font-medium transition-all ${
                 activeFilter === category
-                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
+                  ? 'bg-gradient-to-r from-cyan-500 to-emerald-500 text-white'
                   : 'glass-effect text-gray-300 hover:text-white hover:bg-white hover:bg-opacity-10'
               }`}
             >
@@ -202,7 +202,7 @@ const Projects = () => {
                 className="glass-effect rounded-xl sm:rounded-2xl overflow-hidden card-hover group cursor-pointer h-full"
                 onClick={() => setSelectedProject(project)}
               >
-                <div className="h-40 sm:h-48 bg-gradient-to-r from-purple-600 to-pink-600 relative overflow-hidden">
+                <div className="h-40 sm:h-48 bg-gradient-to-r from-cyan-500 to-emerald-500 relative overflow-hidden">
                   <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center group-hover:bg-opacity-30 transition-all">
                     <span className="text-3xl sm:text-4xl">💻</span>
                   </div>
@@ -238,7 +238,7 @@ const Projects = () => {
                   </div>
                   
                   <div className="flex justify-between items-center">
-                    <span className="text-purple-400 group-hover:text-purple-300 text-sm font-medium transition-colors">
+                    <span className="text-cyan-400 group-hover:text-cyan-300 text-sm font-medium transition-colors">
                       View Details →
                     </span>
                     <div className="flex space-x-2 sm:space-x-3 text-gray-400">

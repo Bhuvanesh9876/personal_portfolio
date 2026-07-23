@@ -21,7 +21,7 @@ const Skills = () => {
       icon: Smartphone,
       title: "Mobile Development",
       skills: ["React Native", "Flutter", "iOS", "Android", "PWA"],
-      color: "from-purple-500 to-pink-500"
+      color: "from-indigo-500 to-cyan-500"
     },
     {
       icon: Cloud,
@@ -33,7 +33,7 @@ const Skills = () => {
       icon: Palette,
       title: "UI/UX Design",
       skills: ["Figma", "Adobe XD", "Tailwind CSS", "Framer Motion", "WebGL"],
-      color: "from-pink-500 to-rose-500"
+      color: "from-teal-500 to-emerald-500"
     },
     {
       icon: Database,
@@ -155,7 +155,7 @@ const Skills = () => {
                 <div key={index} className="space-y-2">
                   <div className="flex justify-between text-sm sm:text-base">
                     <span className="text-gray-300">{item.skill}</span>
-                    <span className="text-purple-400">{item.level}%</span>
+                    <span className="text-cyan-400">{item.level}%</span>
                   </div>
                   <div className="h-2 sm:h-3 bg-gray-700 rounded-full overflow-hidden">
                     <motion.div
@@ -163,7 +163,7 @@ const Skills = () => {
                       whileInView={{ width: `${item.level}%` }}
                       transition={{ duration: 1.5, delay: index * 0.2 }}
                       viewport={{ once: true }}
-                      className="h-full bg-gradient-to-r from-purple-600 to-pink-600 rounded-full"
+                      className="h-full bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-full"
                     />
                   </div>
                 </div>

@@ -23,13 +23,13 @@ function TorusRing() {
       {/* Inner glowing neon torus */}
       <mesh ref={meshRef}>
         <torusGeometry args={[2.5, 0.12, 16, 100]} />
-        <meshBasicMaterial color="#a855f7" wireframe />
+        <meshBasicMaterial color="#06b6d4" wireframe />
       </mesh>
       
       {/* Outer wider neon ring */}
       <mesh ref={outerMeshRef}>
         <torusGeometry args={[3.2, 0.06, 8, 64]} />
-        <meshBasicMaterial color="#ec4899" wireframe />
+        <meshBasicMaterial color="#10b981" wireframe />
       </mesh>
     </group>
   )
