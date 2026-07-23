@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react'
 import emailjs from '@emailjs/browser'
+import Tilt from 'react-parallax-tilt'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -180,105 +181,115 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="glass-effect rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8"
+            className="w-full h-full"
           >
-            {isSent && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-500 bg-opacity-20 border border-green-500 rounded-xl text-green-400 text-center text-sm sm:text-base"
-              >
-                ✅ Message sent successfully! I'll get back to you soon.
-              </motion.div>
-            )}
+            <Tilt
+              perspective={1200}
+              glareEnable={true}
+              glareMaxOpacity={0.05}
+              glareColor="#ffffff"
+              scale={1.01}
+              transitionSpeed={1500}
+              className="glass-effect rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 h-full"
+            >
+              {isSent && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-500 bg-opacity-20 border border-green-500 rounded-xl text-green-400 text-center text-sm sm:text-base"
+                >
+                  ✅ Message sent successfully! I'll get back to you soon.
+                </motion.div>
+              )}
 
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
+                      placeholder="Enter your name"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                    Your Name
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                    Subject
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
                     onChange={handleChange}
                     required
                     className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
-                    placeholder="Enter your name"
+                    placeholder="What's this about?"
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                    Email Address
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                    Message
                   </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
-                    placeholder="Enter your email"
+                    rows="4"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all resize-none text-sm sm:text-base"
+                    placeholder="Tell me about your project or just say hello!"
                   />
                 </div>
-              </div>
 
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all text-sm sm:text-base"
-                  placeholder="What's this about?"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows="4"
-                  className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all resize-none text-sm sm:text-base"
-                  placeholder="Tell me about your project or just say hello!"
-                />
-              </div>
-
-              <motion.button
-                type="submit"
-                disabled={isLoading}
-                whileHover={{ scale: isLoading ? 1 : 1.05 }}
-                whileTap={{ scale: isLoading ? 1 : 0.95 }}
-                className="w-full py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transition-all"
-              >
-                {isLoading ? (
-                  <>
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span className="text-sm sm:text-base">Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send size={18} className="sm:w-5 sm:h-5" />
-                    <span className="text-sm sm:text-base">Send Message</span>
-                  </>
-                )}
-              </motion.button>
-            </form>
+                <motion.button
+                  type="submit"
+                  disabled={isLoading}
+                  whileHover={{ scale: isLoading ? 1 : 1.05 }}
+                  whileTap={{ scale: isLoading ? 1 : 0.95 }}
+                  className="w-full py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transition-all"
+                >
+                  {isLoading ? (
+                    <>
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span className="text-sm sm:text-base">Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} className="sm:w-5 sm:h-5" />
+                      <span className="text-sm sm:text-base">Send Message</span>
+                    </>
+                  )}
+                </motion.button>
+              </form>
+            </Tilt>
           </motion.div>
         </div>
 

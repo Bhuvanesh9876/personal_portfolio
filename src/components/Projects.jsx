@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, Github, X, Filter } from 'lucide-react'
+import Tilt from 'react-parallax-tilt'
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null)
@@ -188,55 +189,65 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-50px" }}
-              whileHover={{ y: -5 }}
-              className="glass-effect rounded-xl sm:rounded-2xl overflow-hidden card-hover group cursor-pointer"
-              onClick={() => setSelectedProject(project)}
+              className="w-full h-full"
             >
-              <div className="h-40 sm:h-48 bg-gradient-to-r from-purple-600 to-pink-600 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center group-hover:bg-opacity-30 transition-all">
-                  <span className="text-3xl sm:text-4xl">💻</span>
-                </div>
-                <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
-                  <span className="px-2 py-1 sm:px-3 sm:py-1 bg-black bg-opacity-50 rounded-full text-xs sm:text-sm">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-              
-              <div className="p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:gradient-text transition-all line-clamp-1">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 mb-3 sm:mb-4 line-clamp-2 text-sm sm:text-base">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
-                  {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-2 py-1 bg-gray-800 rounded text-xs"
-                    >
-                      {tech}
+              <Tilt
+                perspective={1000}
+                glareEnable={true}
+                glareMaxOpacity={0.12}
+                glareColor="#ffffff"
+                glarePosition="all"
+                scale={1.03}
+                transitionSpeed={1200}
+                className="glass-effect rounded-xl sm:rounded-2xl overflow-hidden card-hover group cursor-pointer h-full"
+                onClick={() => setSelectedProject(project)}
+              >
+                <div className="h-40 sm:h-48 bg-gradient-to-r from-purple-600 to-pink-600 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center group-hover:bg-opacity-30 transition-all">
+                    <span className="text-3xl sm:text-4xl">💻</span>
+                  </div>
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
+                    <span className="px-2 py-1 sm:px-3 sm:py-1 bg-black bg-opacity-50 rounded-full text-xs sm:text-sm">
+                      {project.category}
                     </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span className="px-2 py-1 bg-gray-800 rounded text-xs">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
-                </div>
-                
-                <div className="flex justify-between items-center">
-                  <button className="text-purple-400 hover:text-purple-300 text-sm font-medium">
-                    View Details →
-                  </button>
-                  <div className="flex space-x-2 sm:space-x-3 text-gray-400">
-                    <Github size={16} className="sm:w-5 sm:h-5" />
-                    <ExternalLink size={16} className="sm:w-5 sm:h-5" />
                   </div>
                 </div>
-              </div>
+                
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:gradient-text transition-all line-clamp-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-400 mb-3 sm:mb-4 line-clamp-2 text-sm sm:text-base">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-4">
+                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-2 py-1 bg-gray-800 rounded text-xs"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 3 && (
+                      <span className="px-2 py-1 bg-gray-800 rounded text-xs">
+                        +{project.technologies.length - 3}
+                      </span>
+                    )}
+                  </div>
+                  
+                  <div className="flex justify-between items-center">
+                    <span className="text-purple-400 group-hover:text-purple-300 text-sm font-medium transition-colors">
+                      View Details →
+                    </span>
+                    <div className="flex space-x-2 sm:space-x-3 text-gray-400">
+                      <Github size={16} className="sm:w-5 sm:h-5" />
+                      <ExternalLink size={16} className="sm:w-5 sm:h-5" />
+                    </div>
+                  </div>
+                </div>
+              </Tilt>
             </motion.div>
           ))}
         </div>

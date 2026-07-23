@@ -1,6 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail, Download } from 'lucide-react'
+import Tilt from 'react-parallax-tilt'
+import AvatarAura3D from './AvatarAura3D'
 
 const Hero = () => {
   const scrollToSection = (sectionId) => {
@@ -21,66 +23,70 @@ const Hero = () => {
           className="max-w-4xl mx-auto"
         >
           {/* Profile Image */}
-          {/* Profile Image */}
-<motion.div
-  initial={{ scale: 0 }}
-  animate={{ scale: 1 }}
-  transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-  className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto mb-6 sm:mb-8 relative group"
->
-  {/* Animated Gradient Border */}
-  <motion.div
-    animate={{ rotate: 360 }}
-    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-    className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 p-1"
-  >
-    <div className="w-full h-full rounded-full bg-black"></div>
-  </motion.div>
-  
-  {/* Profile Picture Container */}
-  <div className="relative w-full h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1 z-10">
-    <div className="w-full h-full rounded-full bg-black overflow-hidden border-2 border-gray-800 shadow-2xl">
-      {/* Your Profile Image from URL */}
-      <img
-        src="https://res.cloudinary.com/drc8bufjn/image/upload/v1759140720/portfolios/xrgfi2lg9kph7d1mjqhh.jpg" // Replace with your actual photo URL
-        alt="Y. Bhuvanesh - Full Stack Developer"
-        className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500 ease-out"
-        onError={(e) => {
-          // Fallback if image fails to load
-          console.error('Failed to load profile image');
-          e.target.style.display = 'none';
-          const fallback = e.target.nextElementSibling;
-          fallback.style.display = 'flex';
-        }}
-        onLoad={(e) => {
-          // Image loaded successfully
-          console.log('Profile image loaded successfully');
-          e.target.style.opacity = '1';
-        }}
-        style={{ opacity: 0, transition: 'opacity 0.5s ease-in-out' }}
-      />
-      
-      {/* Fallback Avatar - Shows if image fails to load */}
-      <div 
-        className="w-full h-full rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white hidden"
-      >
-        <span className="text-xl sm:text-2xl font-bold">YB</span>
-      </div>
-    </div>
-  </div>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+            className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto mb-6 sm:mb-8 relative group"
+          >
+            {/* 3D Wireframe Glowing Aura */}
+            <AvatarAura3D />
 
-  {/* Online Status Indicator */}
-  <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full border-2 border-black animate-pulse z-20">
-    <div className="w-full h-full rounded-full bg-green-400 animate-ping absolute"></div>
-  </div>
+            {/* 3D Tilt Wrapper for Avatar */}
+            <Tilt
+              perspective={800}
+              glareEnable={true}
+              glareMaxOpacity={0.25}
+              glareColor="#ffffff"
+              glarePosition="all"
+              scale={1.05}
+              className="w-full h-full cursor-pointer relative z-10 rounded-full"
+            >
+              {/* Profile Picture Container */}
+              <div className="relative w-full h-full rounded-full bg-gradient-to-r from-purple-500 to-pink-500 p-1 z-10">
+                <div className="w-full h-full rounded-full bg-black overflow-hidden border-2 border-gray-800 shadow-2xl">
+                  {/* Your Profile Image from URL */}
+                  <img
+                    src="https://res.cloudinary.com/drc8bufjn/image/upload/v1759140720/portfolios/xrgfi2lg9kph7d1mjqhh.jpg" // Replace with your actual photo URL
+                    alt="Y. Bhuvanesh - Full Stack Developer"
+                    className="w-full h-full object-cover rounded-full"
+                    onError={(e) => {
+                      // Fallback if image fails to load
+                      console.error('Failed to load profile image');
+                      e.target.style.display = 'none';
+                      const fallback = e.target.nextElementSibling;
+                      fallback.style.display = 'flex';
+                    }}
+                    onLoad={(e) => {
+                      // Image loaded successfully
+                      console.log('Profile image loaded successfully');
+                      e.target.style.opacity = '1';
+                    }}
+                    style={{ opacity: 0, transition: 'opacity 0.5s ease-in-out' }}
+                  />
+                  
+                  {/* Fallback Avatar - Shows if image fails to load */}
+                  <div 
+                    className="w-full h-full rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white hidden"
+                  >
+                    <span className="text-xl sm:text-2xl font-bold">YB</span>
+                  </div>
+                </div>
+              </div>
+            </Tilt>
 
-  {/* Hover Effect */}
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    transition={{ type: "spring", stiffness: 300 }}
-    className="absolute inset-0 rounded-full border-2 border-white/20 opacity-0 group-hover:opacity-100 pointer-events-none"
-  />
-</motion.div>
+            {/* Online Status Indicator */}
+            <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full border-2 border-black animate-pulse z-20">
+              <div className="w-full h-full rounded-full bg-green-400 animate-ping absolute"></div>
+            </div>
+
+            {/* Hover Effect */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="absolute inset-0 rounded-full border-2 border-white/20 opacity-0 group-hover:opacity-100 pointer-events-none"
+            />
+          </motion.div>
 
           {/* Main Heading */}
           <motion.h1
