@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, User, Tag, MessageSquare } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 import Tilt from 'react-parallax-tilt'
 
@@ -208,32 +208,38 @@ const Contact = () => {
                     <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                       Your Name
                     </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm sm:text-base"
-                      placeholder="Enter your name"
-                    />
+                    <div className="relative group">
+                      <User size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-cyan-400 transition-colors pointer-events-none" />
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full pl-10 pr-4 py-2.5 sm:py-3.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all text-sm sm:text-base"
+                        placeholder="Enter your name"
+                      />
+                    </div>
                   </div>
                   
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                       Email Address
                     </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm sm:text-base"
-                      placeholder="Enter your email"
-                    />
+                    <div className="relative group">
+                      <Mail size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-cyan-400 transition-colors pointer-events-none" />
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full pl-10 pr-4 py-2.5 sm:py-3.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all text-sm sm:text-base"
+                        placeholder="Enter your email"
+                      />
+                    </div>
                   </div>
                 </div>
 
@@ -241,32 +247,38 @@ const Contact = () => {
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
                     Subject
                   </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all text-sm sm:text-base"
-                    placeholder="What's this about?"
-                  />
+                  <div className="relative group">
+                    <Tag size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-cyan-400 transition-colors pointer-events-none" />
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-10 pr-4 py-2.5 sm:py-3.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all text-sm sm:text-base"
+                      placeholder="What's this about?"
+                    />
+                  </div>
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                     Message
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="4"
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-black bg-opacity-50 border border-gray-700 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all resize-none text-sm sm:text-base"
-                    placeholder="Tell me about your project or just say hello!"
-                  />
+                  <div className="relative group">
+                    <MessageSquare size={18} className="absolute left-3.5 top-4 text-gray-500 group-focus-within:text-cyan-400 transition-colors pointer-events-none" />
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows="4"
+                      className="w-full pl-10 pr-4 py-2.5 sm:py-3.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg sm:rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all resize-none text-sm sm:text-base"
+                      placeholder="Tell me about your project or just say hello!"
+                    />
+                  </div>
                 </div>
 
                 <motion.button
@@ -299,10 +311,10 @@ const Contact = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-12 sm:mt-16 lg:mt-20 pt-6 sm:pt-8 border-t border-gray-800"
+          className="text-center mt-12 sm:mt-16 lg:mt-20 pt-6"
         >
           <p className="text-gray-400 text-sm sm:text-base">
-            © 2024 Y. BHUVANESH. Crafted with ❤️ using React & Tailwind CSS
+            © 2024 Y. BHUVANESH. All rights reserved.
           </p>
         </motion.div>
       </div>
