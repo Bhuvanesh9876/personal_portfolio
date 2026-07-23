@@ -29,7 +29,7 @@ function TorusRing() {
       {/* Outer wider neon ring */}
       <mesh ref={outerMeshRef}>
         <torusGeometry args={[3.2, 0.06, 8, 64]} />
-        <meshBasicMaterial color="#10b981" wireframe />
+        <meshBasicMaterial color="#3b82f6" wireframe />
       </mesh>
     </group>
   )

@@ -15,7 +15,7 @@ const Skills = () => {
       icon: Server,
       title: "Backend Development",
       skills: ["Node.js", "Python", "Express", "MongoDB", "PostgreSQL"],
-      color: "from-green-500 to-emerald-500"
+      color: "from-indigo-600 to-blue-500"
     },
     {
       icon: Smartphone,
@@ -33,7 +33,7 @@ const Skills = () => {
       icon: Palette,
       title: "UI/UX Design",
       skills: ["Figma", "Adobe XD", "Tailwind CSS", "Framer Motion", "WebGL"],
-      color: "from-teal-500 to-emerald-500"
+      color: "from-cyan-500 to-blue-500"
     },
     {
       icon: Database,
@@ -163,7 +163,7 @@ const Skills = () => {
                       whileInView={{ width: `${item.level}%` }}
                       transition={{ duration: 1.5, delay: index * 0.2 }}
                       viewport={{ once: true }}
-                      className="h-full bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-full"
+                      className="h-full bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full"
                     />
                   </div>
                 </div>

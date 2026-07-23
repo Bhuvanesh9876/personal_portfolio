@@ -43,7 +43,7 @@ const Hero = () => {
               className="w-full h-full cursor-pointer relative z-10 rounded-full"
             >
               {/* Profile Picture Container */}
-              <div className="relative w-full h-full rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 p-1 z-10">
+              <div className="relative w-full h-full rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 p-1 z-10">
                 <div className="w-full h-full rounded-full bg-black overflow-hidden border-2 border-gray-800 shadow-2xl">
                   {/* Your Profile Image from URL */}
                   <img
@@ -67,7 +67,7 @@ const Hero = () => {
                   
                   {/* Fallback Avatar - Shows if image fails to load */}
                   <div 
-                    className="w-full h-full rounded-full bg-gradient-to-br from-cyan-600 to-emerald-600 flex items-center justify-center text-white hidden"
+                    className="w-full h-full rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white hidden"
                   >
                     <span className="text-xl sm:text-2xl font-bold">YB</span>
                   </div>
@@ -106,7 +106,7 @@ const Hero = () => {
             className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 px-4"
           >
             Passionate <span className="text-cyan-400">Computer Science Student</span> &{' '}
-            <span className="text-emerald-400">Full Stack Developer</span>
+            <span className="text-blue-400">Full Stack Developer</span>
           </motion.p>
 
           <motion.p
@@ -130,7 +130,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('projects')}
-              className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-full font-semibold text-base sm:text-lg hover:shadow-2xl transition-all duration-300"
+              className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full font-semibold text-base sm:text-lg hover:shadow-2xl transition-all duration-300"
             >
               View My Work
             </motion.button>

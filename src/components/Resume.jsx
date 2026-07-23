@@ -56,7 +56,7 @@ const Resume = () => {
           >
             <div className="flex flex-col items-center">
               {/* Document Icon */}
-              <div className="w-24 h-24 rounded-2xl bg-gradient-to-r from-cyan-500 to-emerald-500 flex items-center justify-center mb-6 animate-pulse">
+              <div className="w-24 h-24 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 flex items-center justify-center mb-6 animate-pulse">
                 <FileText size={48} className="text-white" />
               </div>
 
@@ -82,7 +82,7 @@ const Resume = () => {
                   onClick={handleDownload}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-full hover:shadow-lg transition-all text-sm sm:text-base"
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full hover:shadow-lg transition-all text-sm sm:text-base"
                 >
                   <Download size={20} />
                   Download Resume

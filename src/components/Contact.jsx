@@ -142,7 +142,7 @@ const Contact = () => {
                   whileHover={{ x: 5 }}
                   className="flex items-center space-x-3 sm:space-x-4 p-3 sm:p-4 glass-effect rounded-xl sm:rounded-2xl hover:bg-white hover:bg-opacity-10 transition-all group cursor-pointer"
                 >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
                     <item.icon size={20} className="sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div className="min-w-0">
@@ -274,7 +274,7 @@ const Contact = () => {
                   disabled={isLoading}
                   whileHover={{ scale: isLoading ? 1 : 1.05 }}
                   whileTap={{ scale: isLoading ? 1 : 0.95 }}
-                  className="w-full py-3 sm:py-4 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transition-all"
+                  className="w-full py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 transition-all"
                 >
                   {isLoading ? (
                     <>

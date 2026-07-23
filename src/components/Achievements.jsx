@@ -30,7 +30,7 @@ const Achievements = () => {
       title: "Projects Completed",
       description: "Personal and academic projects",
       count: "25+",
-      color: "from-green-500 to-emerald-500"
+      color: "from-indigo-600 to-blue-500"
     },
     {
       icon: Users,
@@ -44,7 +44,7 @@ const Achievements = () => {
       title: "Certifications",
       description: "Professional certifications earned",
       count: "12",
-      color: "from-teal-500 to-emerald-500"
+      color: "from-cyan-500 to-blue-500"
     }
   ]
 
@@ -187,7 +187,7 @@ const Achievements = () => {
           
           <div className="relative">
             {/* Timeline line - Hidden on mobile, visible on md and up */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-500 to-emerald-500"></div>
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-600 to-cyan-500"></div>
             
             {/* Timeline items */}
             {[
@@ -215,8 +215,7 @@ const Achievements = () => {
                   </div>
                 </div>
                 
-                {/* Timeline dot - Hidden on mobile, visible on md and up */}
-                <div className="hidden md:block w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 border-4 border-black z-10"></div>
+                <div className="hidden md:block w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 border-4 border-black z-10"></div>
                 
                 <div className="w-full md:w-1/2"></div>
               </motion.div>
