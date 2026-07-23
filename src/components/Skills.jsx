@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { Code, Database, Palette, Cloud, Smartphone, Server } from 'lucide-react'
 import Tilt from 'react-parallax-tilt'
 
-const Skills = () => {
+const Skills = ({ physicsMode }) => {
   const skillCategories = [
     {
       icon: Code,
@@ -88,6 +88,24 @@ const Skills = () => {
               key={index}
               variants={item}
               className="w-full h-full"
+              animate={{
+                y: [0, physicsMode === 'float' ? -18 : (physicsMode === 'warp' ? -2 : -6), 0],
+                x: [0, physicsMode === 'float' ? (index % 2 === 0 ? 8 : -8) : (physicsMode === 'warp' ? 0 : (index % 2 === 0 ? 3 : -3)), 0]
+              }}
+              transition={{
+                y: {
+                  repeat: Infinity,
+                  duration: physicsMode === 'float' ? 3.5 : (physicsMode === 'warp' ? 1.2 : 5.5),
+                  ease: "easeInOut",
+                  delay: index * 0.35
+                },
+                x: {
+                  repeat: Infinity,
+                  duration: physicsMode === 'float' ? 4.5 : (physicsMode === 'warp' ? 1.5 : 6.5),
+                  ease: "easeInOut",
+                  delay: index * 0.35
+                }
+              }}
             >
               <Tilt
                 perspective={1000}

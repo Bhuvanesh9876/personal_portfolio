@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
-function Points({ count = 1000 }) {
+function Points({ count = 1000, mode = 'normal' }) {
   const pointsRef = useRef()
   const attribRef = useRef()
 
@@ -55,6 +55,8 @@ function Points({ count = 1000 }) {
     // Calculate pointer in 3D space relative to camera view plane
     pointer3D.set(state.pointer.x * 12, state.pointer.y * 8, 0)
 
+    const isWarp = mode === 'warp'
+
     for (let i = 0; i < count; i++) {
       const idx = i * 3
       const oX = originalPositions[idx]
@@ -62,41 +64,56 @@ function Points({ count = 1000 }) {
       const oZ = originalPositions[idx + 2]
       const speed = speeds[i]
 
-      // Add gentle wave float / twinkle animation
-      const waveX = Math.sin(time * 0.15 + oZ) * 0.08
-      const waveY = Math.cos(time * 0.15 + oX) * 0.08
-      
-      let targetX = oX + waveX
-      let targetY = oY + waveY
+      let targetX = oX
+      let targetY = oY
       let targetZ = oZ
 
-      // Calculate distance to pointer
-      const dx = pointer3D.x - posArr[idx]
-      const dy = pointer3D.y - posArr[idx + 1]
-      const dist = Math.sqrt(dx * dx + dy * dy)
+      if (isWarp) {
+        // Warp speed simulation: stars accelerate forward towards camera
+        posArr[idx + 2] += speed * 0.8
+        if (posArr[idx + 2] > 15) {
+          posArr[idx + 2] = -30
+          posArr[idx] = (Math.random() - 0.5) * 35
+          posArr[idx + 1] = (Math.random() - 0.5) * 35
+        }
+      } else {
+        // Standard/Float Mode: Brownian drift + cursor repulsion
+        const driftSpeed = mode === 'float' ? 0.05 : 0.15
+        const waveX = Math.sin(time * driftSpeed + oZ) * 0.08
+        const waveY = Math.cos(time * driftSpeed + oX) * 0.08
+        
+        targetX = oX + waveX
+        targetY = oY + waveY
+        targetZ = oZ
 
-      // Interactive gravity force (pull stars slightly toward mouse within a range)
-      if (dist < 6) {
-        const force = (6 - dist) * 0.06 * speed
-        targetX += dx * force
-        targetY += dy * force
+        const dx = pointer3D.x - posArr[idx]
+        const dy = pointer3D.y - posArr[idx + 1]
+        const dist = Math.sqrt(dx * dx + dy * dy)
+
+        // Deflect stars away from cursor (zero-gravity repulsion)
+        if (dist < 5) {
+          const force = (5 - dist) * 0.12 * speed
+          targetX -= (dx / (dist || 0.01)) * force
+          targetY -= (dy / (dist || 0.01)) * force
+        }
+
+        // Return smoothly to drift target position
+        posArr[idx] += (targetX - posArr[idx]) * 0.08
+        posArr[idx + 1] += (targetY - posArr[idx + 1]) * 0.08
+        posArr[idx + 2] += (targetZ - posArr[idx + 2]) * 0.08
       }
-
-      // Smooth interpolation to target positions
-      posArr[idx] += (targetX - posArr[idx]) * 0.1
-      posArr[idx + 1] += (targetY - posArr[idx + 1]) * 0.1
-      posArr[idx + 2] += (targetZ - posArr[idx + 2]) * 0.1
     }
 
     attribRef.current.needsUpdate = true
 
-    // Slow background rotation
-    pointsRef.current.rotation.y = time * 0.008
-    pointsRef.current.rotation.x = time * 0.004
+    // Background rotation speed
+    const rotSpeed = isWarp ? 0.06 : (mode === 'float' ? 0.002 : 0.008)
+    pointsRef.current.rotation.y = time * rotSpeed
+    pointsRef.current.rotation.x = time * (rotSpeed * 0.5)
 
-    // Subtle overall parallax
-    const globalTargetX = state.pointer.x * 1.5
-    const globalTargetY = state.pointer.y * 1.5
+    // Interactive parallax camera offset
+    const globalTargetX = state.pointer.x * (isWarp ? 3.0 : 1.5)
+    const globalTargetY = state.pointer.y * (isWarp ? 3.0 : 1.5)
     pointsRef.current.position.x += (globalTargetX - pointsRef.current.position.x) * 0.05
     pointsRef.current.position.y += (globalTargetY - pointsRef.current.position.y) * 0.05
   })
@@ -201,7 +218,7 @@ function NebulaClouds({ count = 12 }) {
   )
 }
 
-export default function StarfieldBackground() {
+export default function StarfieldBackground({ mode = 'normal' }) {
   return (
     <div className="fixed inset-0 -z-20 w-screen h-screen pointer-events-none overflow-hidden bg-[#010002]">
       {/* Deep purple/black cosmic background radial gradient */}
@@ -216,7 +233,7 @@ export default function StarfieldBackground() {
         gl={{ antialias: true, alpha: true }}
       >
         <ambientLight intensity={0.6} />
-        <Points />
+        <Points mode={mode} />
         <NebulaClouds />
       </Canvas>
     </div>

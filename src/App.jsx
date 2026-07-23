@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -10,15 +10,17 @@ import Resume from './components/Resume'
 import StarfieldBackground from './components/Starfield'
 
 function App() {
+  const [physicsMode, setPhysicsMode] = useState('normal') // 'normal', 'float', 'warp'
+
   return (
     <div className="min-h-screen bg-transparent text-white relative">
       {/* 3D Cosmic Particle Background */}
-      <StarfieldBackground />
+      <StarfieldBackground mode={physicsMode} />
 
       <Navbar />
-      <Hero />
-      <Skills />
-      <Projects />
+      <Hero setPhysicsMode={setPhysicsMode} />
+      <Skills physicsMode={physicsMode} />
+      <Projects physicsMode={physicsMode} />
       <Resume />
       <Contact />
       

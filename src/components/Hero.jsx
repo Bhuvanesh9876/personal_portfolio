@@ -1,10 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail, Download } from 'lucide-react'
 import Tilt from 'react-parallax-tilt'
 import AvatarAura3D from './AvatarAura3D'
 
-const Hero = () => {
+const Hero = ({ setPhysicsMode }) => {
+  const [terminalInput, setTerminalInput] = useState('')
+  const [terminalLogs, setTerminalLogs] = useState([
+    'Antigravity Neural Terminal [v1.0.0]',
+    'Type /float, /warp, or /stabilize to control local physics.',
+  ])
+
+  const handleTerminalSubmit = (e) => {
+    e.preventDefault()
+    const cmd = terminalInput.trim().toLowerCase()
+    let response = ''
+    
+    if (cmd === '/float') {
+      setPhysicsMode('float')
+      response = 'System: Floating amplitude initialized. Zero-gravity activated.'
+    } else if (cmd === '/warp') {
+      setPhysicsMode('warp')
+      response = 'System: Quantum warp drive engaged. Speeding through coordinates.'
+    } else if (cmd === '/stabilize') {
+      setPhysicsMode('normal')
+      response = 'System: Gravitational stabilizers active. Normal states restored.'
+    } else if (cmd === 'clear') {
+      setTerminalLogs([])
+      setTerminalInput('')
+      return
+    } else if (cmd) {
+      response = `Error: Command "${cmd}" not recognized. Try /float, /warp, or /stabilize.`
+    }
+
+    if (cmd) {
+      setTerminalLogs((prev) => [...prev, `bhuvanesh@antigravity ~ % ${terminalInput}`, response])
+    }
+    setTerminalInput('')
+  }
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
     element?.scrollIntoView({ behavior: 'smooth' })
@@ -153,6 +187,45 @@ const Hero = () => {
               
               Resume
             </motion.button>
+          </motion.div>
+
+          {/* Antigravity Neural Terminal */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65 }}
+            className="w-full max-w-lg mx-auto mb-10 text-left px-4"
+          >
+            <div className="bg-black/60 border border-white/10 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-md">
+              {/* Terminal Header */}
+              <div className="bg-white/5 border-b border-white/10 px-4 py-2 flex items-center space-x-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/70"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/70"></div>
+                <span className="text-gray-400 text-xs font-mono select-none pl-2">bhuvanesh@antigravity ~ terminal</span>
+              </div>
+              
+              {/* Terminal Body */}
+              <div className="p-4 font-mono text-xs sm:text-sm h-36 overflow-y-auto space-y-1.5">
+                {terminalLogs.map((log, index) => (
+                  <div key={index} className={log.startsWith('Error:') ? 'text-red-400' : log.startsWith('System:') ? 'text-cyan-400' : 'text-gray-300'}>
+                    {log}
+                  </div>
+                ))}
+              </div>
+
+              {/* Terminal Input */}
+              <form onSubmit={handleTerminalSubmit} className="flex items-center px-4 py-2.5 border-t border-white/10 bg-black/40">
+                <span className="text-cyan-400 font-mono mr-2">❯</span>
+                <input
+                  type="text"
+                  value={terminalInput}
+                  onChange={(e) => setTerminalInput(e.target.value)}
+                  className="bg-transparent text-white focus:outline-none flex-1 font-mono text-xs sm:text-sm"
+                  placeholder="Type /float, /warp, or /stabilize..."
+                />
+              </form>
+            </div>
           </motion.div>
 
           {/* Social Links */}
